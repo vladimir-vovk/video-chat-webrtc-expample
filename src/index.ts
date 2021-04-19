@@ -3,7 +3,7 @@ import http from 'http'
 import socket from 'socket.io'
 import { v4 } from 'uuid'
 
-const PORT = 3000 || process.env.PORT
+const port = process.env.PORT || 3000
 const app = express()
 const server = http.createServer(app)
 const io = new socket.Server(server)
@@ -35,5 +35,6 @@ io.on('connection', socket => {
   })
 })
 
-console.log(`Listening on port ${PORT}...`)
-server.listen(PORT)
+server.listen(port, () => {
+  console.log(`Listening on port ${port}...`)
+})
